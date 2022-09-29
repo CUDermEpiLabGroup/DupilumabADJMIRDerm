@@ -1,0 +1,374 @@
+---
+title: "Dupilumab Analaysis"
+author: | 
+ | Project: Prescribing Patterns of Dupilumab for Atopic Dermatitis
+ |
+ | Analyst: Grace Bosma, Camille Hochheimer
+ | 
+ | Investigators: Torunn Sivesind, Robert P. Dellavalle, Lisa Schilling
+ | 
+ | Report Generated: `r paste(format(Sys.Date(), '%B %d, %Y'))`
+output: 
+  html_document: 
+    highlight: espresso
+    number_sections: yes
+    theme: yeti
+    toc: yes
+    toc_depth: 2
+    toc_float: yes
+
+---
+
+```{r, echo = FALSE, out.width= "70%", fig.show='hold'}
+knitr::include_graphics("logo.png")
+```
+
+---
+
+```{r, SETUP, message = F, warning = F, echo = FALSE}
+knitr::opts_chunk$set(echo = F)
+pacman::p_load(table1, tidyverse, ggplot2, DiagrammeR, kableExtra, MASS, multcomp)
+byperson <- read.csv("cleaned/byperson.csv")
+drug <- read.csv("cleaned/drug.csv")
+most_recent_diagnoses <- read.csv("cleaned/most_recent_diagnoses.csv")
+included_COI <- read_csv("cleaned/included_COI.csv")
+gbtheme <-theme_light() + theme(panel.grid.major = element_blank(), 
+                                panel.grid.minor = element_blank(), 
+                                axis.ticks =element_line(color = "grey60"), 
+                                plot.title = element_text(hjust=0.5), 
+                                plot.subtitle = element_text(hjust = 0.5), 
+                                text = element_text(size = 10, face = "bold"))
+
+byperson$gender <- as.character(byperson$gender)
+byperson$gender <- ifelse(byperson$gender == "Choose not to disclose" | byperson$gender == "Unknown", NA, byperson$gender)
+byperson$gender <- as.factor(byperson$gender)
+
+byperson$ethnicity <- as.character(byperson$ethnicity)
+byperson$ethnicity <- ifelse(byperson$ethnicity == "*Unspecified" | byperson$ethnicity == "Patient Refused" | byperson$ethnicity == "Unknown", NA, byperson$ethnicity)
+byperson$ethnicity <- as.factor(byperson$ethnicity)
+
+```
+
+# Project Summary
+To characterize prescribing patterns of Dupilumab for Atopic Dermatitis in those aged 4 to 85 by reviewing retrospective, observational, cohort study data from the Observational Health Data Sciences and Informatics (OHDSI) database.
+
+Eligibility of those included is displayed below.
+```{r}
+graph <- DiagrammeR::grViz(diagram = "digraph flowchart {
+      # define node aesthetics
+      node [fontname = Helvetica, shape = box, fontcolor = Black]        
+      tab1 [label = '@@1']
+      tab2 [label = '@@2']
+      tab3 [label = '@@3']
+      tab4 [label = '@@4']
+
+      graph [splines=ortho]
+      
+# set up node layout
+      tab1 -> tab2;
+      tab2 -> tab3;
+      tab3 -> tab4; 
+      }
+      [1]: paste0('NUMBER OF PERSONS \\nn = ', '114,476')
+      [2]: paste0('CONDITION OF INTEREST \\n (Atopic Dermatitis, Flexural Eczema.. etc) \\nn = ', '10,254')
+      [3]: paste0('ELIGIBLE AGE \\n Age of 18 and 84 on 3/28/2017 \\n (inclusive) \\nn = ', '8,532')
+      [4]: paste0('TWO ELIGIBLE DIAGNOSES \\n At least one occuring in the availability window 3/28/2017 - 3/28/2021 \\n AND \\n A second diagnosis between 3/28/2013 - 3/28/2021 \\nn = ', '6,421')
+      ")
+
+graph
+
+# 
+```
+
+
+# Summary Statistics
+## Overall By Medication
+This table displays the overall summary statistics in three columns: "Did not receive", "Received Dupilumab", and "Overall". These column variables can be interpreted as if an indiviudal included was *ever* prescribed Dupilumab. Those prescribed with a diagnosis of Besnier's Prurigo were combined with those recieving an diagnosis of Atopic Dermatitis.
+```{r}
+label(byperson$age) <- "Age"
+label(byperson$gender) <- "Sex"
+label(byperson$race) <- "Race"
+label(byperson$ethnicity) <- "Ethnicity"
+label(byperson$condition_concept_name) <- "Diagnosis"
+# Table 1 split by if they got Dup ~ever~ or not
+# compare demographics of atopic derm in general vs dup demographics specifically
+table1_byperson <- table1(~ age + gender + race + ethnicity + condition_concept_name | received_rx, data = byperson, rowlabelhead = "User Prevalence")
+
+table1_byperson
+```
+
+## Multiple Prescriptions
+There were no individuals that received only one prescription of Dupilumab. Each individual included had either multiple prescriptions, refills or quantities of dupilumab.
+
+# Test Results
+## Overall
+We assessed whether the proportion of patients who received Dupilumab was diffferent based on patient characteristics. Each patient characteristic in the table below was assessed using logistic regression with the binary outcome of receiving Dupilumab or not. The p-values associated with multi-level categorical characteristics (race, diagnoses) were corrected for multiple testing using the False Discovery Rate method (Benjamini-Hochberg correction). Reference levels include white race, non-Hispanic ethnicity, female sex, and Atopic Dermatitis as first eligible diagnosis. 
+
+Our analysis suggests that Black patients are almost twice as likely to received Dupilumab than White patients. Similarly, those diagnosed with Atopic Neurodermatitis are almost twice as likely to have received Dupilumab than those who were diagnosed with Atopic Dermatitis. Conversely, those with various forms of eczema (Flexural, Nummular and Vesicular) are less likely to have received Dupilumab than those with a most recent diagnoses of Atopic Neurodermatitis. 
+
+
+```{r}
+# for glm model -- controls for multilevel comparisons
+byperson$received <- ifelse(byperson$received_rx == "Received Dupilumab", 1, 0)
+
+#sanity check if 1/0 variable matches character variable
+#table(byperson$received, byperson$received_rx, useNA = "always") #none that disagree
+
+#make most common levels the reference 
+byperson$age_10yr <- byperson$age/ 10
+byperson$gender <- relevel(byperson$gender, ref = "Female")
+byperson$ethnicity <- relevel(byperson$ethnicity, ref = "Non-Hispanic")
+cor.method <- "BH"
+
+# created dummy variables
+byperson$Female <- ifelse(byperson$gender == "Female", 1, 0)
+byperson$Male <- ifelse(byperson$gender == "Male", 1, 0)
+
+byperson$White <- ifelse(byperson$race == "White", 1, 0)
+byperson$Black <- ifelse(byperson$race == "Black or African American", 1, 0)
+byperson$AmericanIndian <- ifelse(byperson$race == "American Indian or Alaska Native", 1, 0)
+byperson$Asian <- ifelse(byperson$race == "Asian", 1, 0)
+byperson$HawaiianPacificIslander <- ifelse(byperson$race == "Native Hawaiian or Other Pacific Islander", 1, 0)
+byperson$OtherRace <- ifelse(byperson$race == "Other", 1, 0)
+byperson$MultipleRace <- ifelse(byperson$race == "Multiple Race", 1, 0)
+
+byperson$HispanicOrLatino <- ifelse(byperson$ethnicity == "Hispanic", 1, 0)
+byperson$NotHispanicOrLatino <- ifelse(byperson$ethnicity == "Non-Hispanic", 1, 0)
+
+byperson$AtopicDermatitis <- ifelse(byperson$condition_concept_name == "Atopic dermatitis", 1, 0)
+byperson$FlexuralEczema <- ifelse(byperson$condition_concept_name == "Flexural eczema", 1, 0)
+byperson$VesicularEczema <- ifelse(byperson$condition_concept_name == "Vesicular eczema", 1, 0)
+byperson$NummularEczema <- ifelse(byperson$condition_concept_name == "Nummular eczema", 1, 0)
+byperson$AtopicNeurodermatitis <- ifelse(byperson$condition_concept_name == "Atopic neurodermatitis", 1, 0)
+```
+
+```{r, message = FALSE, warning = FALSE}
+format_or <- function(data){
+  paste0(data[1], " (", data[2], ",",  data[3], ")", sep ="")
+}
+
+#tests
+#age_test <- t.test(byperson$age_10yr ~byperson$received_rx)
+m_age <- glm(received~age_10yr, data = byperson, family = binomial("logit"))
+m_age_or <- round(exp(cbind(coef(m_age), confint(m_age)))[-1,], 3)
+m_age_or <- paste0(m_age_or[1], " (", m_age_or[2], ",", m_age_or[3], ")", sep ="")
+m_age_pvals <- unname(summary(m_age)$coef[,4])[-1]
+
+#sex_test <- chisq.test(byperson$gender, byperson$received_rx)
+m_sex <- glm(received~Male, data = byperson, family = binomial("logit"))
+m_sex_or <- round(exp(cbind(coef(m_sex), confint(m_sex)))[-1,], 3)
+m_sex_or <- paste0(m_sex_or[1], " (", m_sex_or[2], ",", m_sex_or[3], ")", sep ="")
+m_sex_pvals <- unname(summary(m_sex)$coef[,4])[-1]
+
+#race_test <- fisher.test(byperson$race, byperson$received_rx)
+#contrasts(byperson$race) <- contr.sum(6) #change race contrasts to compare to white
+m_race <- glm(received~AmericanIndian + Asian + Black + MultipleRace + HawaiianPacificIslander + OtherRace, data = byperson, family = binomial("logit"))
+m_race_or <- round(exp(cbind(coef(m_race), confint(m_race)))[-1,], 3)
+m_race_or <-apply(m_race_or, 1, format_or)
+m_race_pvals <- unname(p.adjust(summary(m_race)$coef[,4], method = cor.method))[-1]
+
+#eth_test <- chisq.test(byperson$ethnicity, byperson$received_rx)
+m_eth <- glm(received~HispanicOrLatino, data = byperson, family = binomial("logit"))
+m_eth_or <- format(exp(cbind(coef(m_eth), confint(m_eth)))[-1,], digits = 3, scientific = F)
+m_eth_or <- paste0(m_eth_or[1], " (", m_eth_or[2], ",", m_eth_or[3], ")", sep ="")
+m_eth_pvals <- unname(summary(m_eth)$coef[,4])[-1]
+
+#diag_test <- fisher.test(byperson$condition_concept_name, byperson$received_rx)
+#contrasts(byperson$condition_concept_name) <- contrast_diag 
+m_diag <- glm(received~AtopicNeurodermatitis + FlexuralEczema  +  NummularEczema + VesicularEczema, data = byperson, family = binomial("logit"))
+m_diag_or <- signif(exp(cbind(coef(m_diag), confint(m_diag)))[-1,], digits = 3)
+m_diag_or <-apply(m_diag_or, 1, format_or)
+m_diag_pvals <- unname(p.adjust(summary(m_diag)$coef[,4], method = cor.method))[-1]
+
+```
+
+
+
+
+```{r, message = FALSE, warning = FALSE}
+# create table
+test_result_table <- data.frame(
+  "Variable" = c("Age", "Sex", "**Race**", "", "", "", "", "", 
+                 "Ethnicity", "Diagnoses", "", "", ""),
+  "Levels" = c("Per 10 year increase", 
+               "Female",
+               "American Indian or Alaska Native*", "Asian", 
+                     "Black or African American", "Multiple Race", 
+                     "Native Hawaiian or Other Pacific Islander*", "Other",
+               "Hispanic or Latino", 
+               "Atopic Neurodermatitis", "Flexural Eczema", 
+               "Nummular Eczema", "Vesicular Eczema"),
+  "OR" = c(m_age_or, m_sex_or, m_race_or, m_eth_or, m_diag_or), 
+  "P Value" = round(c(m_age_pvals, m_sex_pvals, NA,
+                m_race_pvals[0:3], NA, m_race_pvals[4],
+                m_eth_pvals,  m_diag_pvals), digits = 3))
+
+# test_result_table[which(test_result_table$Levels == "Besnier's Prurigo*"),] <- c("", "Besnier's Prurigo*",NA, NA)
+# test_result_table[which(test_result_table$Levels == "Infantile Eczema*"),] <- c("", "Infantile Eczema*", NA, NA)
+test_result_table[test_result_table == "NA (NA,NA)"] <- NA
+
+# Format rounding and suppressing scientific notation
+
+test_result_table$P.Value <- ifelse(test_result_table$P.Value <0.001, "<0.001", test_result_table$P.Value)
+
+
+# test_result_table$P.Value <- paste0(test_result_table$P.Value,
+#                 ifelse(test_result_table$P.Value<0.05, "*", " "),
+#                 sep = "")
+
+options(knitr.kable.NA = "---")
+
+
+kable(test_result_table, align = c("rlcccr"), col.names = c("Variable", "Levels", "OR (CI)" , "P Value")) %>%
+  kable_classic() %>%
+  row_spec(c(5,10,11,12,13), bold = T, hline_after = T) %>% 
+  footnote(symbol = "Patients identifying as American Indian, Alaska Native, Native Hawaiian or Other Pacific Islander race resulted in trivial estimates due to low prevelence within our data.", footnote_as_chunk = T) 
+
+#knitr::asis_output(str_replace(tmp, "FOOTNOTE1", "$^{1}"))
+
+
+## note to self -- update the formatting to match table 1 style better
+```
+
+
+
+```{r}
+
+# Continuous variables are tested using a t-test, continuous variables tested with either Chi Square or Fisher's Exact test depending on assumptions*. Tested using a significance level of 0.05 and using Bonferonni correction where applicable. Bolded lines are those with a significant p value. 
+# 
+# *Variables that had over 20% of cells with an expected value less than 5 (like Race) fail the assumptions of a chi-squared test. Fisher's exact test is used instead as it is more reliable in scenarios like these.
+#OLD TABLE -- keeping in case we decide to use chi square / fishers instead of glm as above
+# create table
+# test_result_table <- data.frame(
+#   "Variable" = c("Age", "Sex", "Race", "", "", "", "", "", 
+#                  "Ethnicity"), 
+#   "Levels" = c("Overall", "Overall","Overall", "American Indian or Alaska Native", 
+#                "Asian", "Black or African American", "Native Hawaiian or Other Pacific Islander",
+#                "Other Pacific Islander", "Overall"),
+#   "Test Used" = c("T Test", "Chi Squared", "Fisher's Exact", "", "", "", "", "", 
+#                   "Chi Squared"),
+#   "P Value" = c(age_test$p.value, sex_test$p.value, race_test$p.value,
+#                 pvals[-1],  eth_test$p.value))
+# 
+# test_result_table$P.Value <- round(test_result_table$P.Value, 3)
+# 
+# 
+# test_result_table$P.Value <- paste0(test_result_table$P.Value,
+#                 ifelse(test_result_table$P.Value<test_result_table$Significance, "*", " "), 
+#                 sep = "") 
+# 
+# kable(test_result_table, table.attr = "style='width:53%;'", align = c("rlccc"), col.names = c("Variable", "Levels", "Test Used", "P Value")) %>% 
+#   kable_classic() %>% 
+#   row_spec(c(1,3), bold = T, hline_after = T) 
+
+# Neither sex nor ethnicity variables were significant when intiially explored with a chi-squared test. Race did have a significant Fisher's Exact p-value but was reconsidered using a logistic model and contrast matrix with treatment allocation as the outcome to control for multiple comparisons. After correcting for multiple comparisons with False Discovery Rate method (a.k.a Benjamini-Hochberg correction) we no longer see a signficiant trend in any level of race when compared to the reference category of White. Meaning, we can attribute the signficiant fisher's exact result to either chance or a relatively small sample size.
+```
+
+
+
+
+```{r, warning = F, message = F}
+# Neither sex nor ethnicity variables were significant when intiially explored with a chi-squared test. Race did have a significant Fisher's Exact p-value but was reconsidered using a logistic model and contrast matrix with treatment allocation as the outcome to control for multiple comparisons. After correcting for multiple comparisons with False Discovery Rate method (a.k.a Benjamini-Hochberg correction) we no longer see a signficiant trend in any level of race when compared to the reference category of White. Meaning, we can attribute the signficiant fisher's exact result to either chance or a relatively small sample size.
+# p1 <- byperson %>% 
+#   filter(received_rx == "received Dupilumab") %>%
+#   ggplot(aes(x = age)) + 
+#   geom_histogram(position = "identity") + gbtheme + ggtitle("received Dupilumab")
+# 
+# p2 <- byperson %>% 
+#   filter(received_rx == "Did not Receive") %>%
+#   ggplot(aes(x = age)) + 
+#   geom_histogram(position = "identity") + gbtheme + ggtitle("Did Not Receive Dupilumab")
+# 
+# gridExtra::grid.arrange(p1, p2, ncol = 2)  
+```
+
+
+
+
+# Visualizations
+## Dupilumab Prescription Count
+```{r, out.width="120%"}
+# 4 different types of dupilumab prescriptions
+# Most popular: 2 ML dupilumab 150 MG/ML Prefilled Syringe
+# table(drug$drug_concept_name)
+# 
+drug %>%
+  group_by(drug_concept_name) %>%
+  
+  mutate(drug_concept_name = fct_collapse(drug_concept_name, `300mg dupilumab` = c("2 ML dupilumab 150 MG/ML Prefilled Syringe", "2 ML dupilumab 150 MG/ML Prefilled Syringe [Dupixent]", "2 ML dupilumab 150 MG/ML Auto-Injector"), `200mg dupilumab` = "1.14 ML dupilumab 175 MG/ML Prefilled Syringe")) %>%
+  
+  tally() %>%
+  
+  ggplot(aes(x=reorder(drug_concept_name, -n), y = n, label=n)) +
+  
+  geom_bar(stat='identity', fill = "#FF6666") +
+  
+  geom_text(vjust = -0.3) + theme(axis.ticks.length.x =  element_blank()) +
+  
+  ylab("Count") + xlab("Dupilumab Prescriptions") + gbtheme + scale_x_discrete(labels =
+                                                                        
+  function(x)str_wrap(x, width=20))
+```
+
+## Atopic Dermatitis (AD) Count
+```{r, out.width="120%"}
+most_recent_diagnoses  %>%
+  group_by(condition_concept_name) %>%
+  
+  tally() %>%
+  
+  ggplot(aes(x=reorder(condition_concept_name, -n), y = n, label=n)) +
+  
+  geom_bar(stat='identity', fill = "#00BFC4") +
+  
+  geom_text(vjust = -0.5) + theme(axis.ticks.length.x =  element_blank()) +
+  
+  ylab("Count") + xlab("Most Recent Atopic Dermatitis Diagnoses") + gbtheme +
+  
+  scale_x_discrete(labels = function(x)str_wrap(x, width=10))
+```
+
+
+```{r}
+## Dupilumab Prescriptions
+# byperson %>%
+#   
+#   ggplot(aes(x = condition_concept_name, fill = received_rx)) + 
+#   
+#   geom_bar(position = "fill") + gbtheme  + scale_y_continuous(labels = scales::percent) + 
+#   
+#   ylab("Perecent") + xlab("Most Recent Atopic Dermatitis Diagnoses") + 
+#   
+#   guides(fill = guide_legend(title = "Received Dupilumab?"))
+```
+
+## Atopic Dermatitis x Dupilumab Presriptions
+```{r, out.width="120%", out.height="140%"}
+byperson %>%
+  
+  group_by(condition_concept_name, received_rx) %>% 
+  
+  count(condition_concept_name, received_rx, .drop = FALSE)%>% 
+  
+  ggplot(aes(x = reorder(condition_concept_name, -n), y = n, fill = received_rx, label = n)) + 
+  
+  geom_bar(stat = "identity", position = position_dodge2(preserve = "single")) + gbtheme + geom_text(position = position_dodge(width = 0.9), vjust =-0.1) + 
+  
+  theme(axis.ticks.x = element_blank()) + ylab("Number of Individuals") + 
+  
+  xlab("Most Recent AD Diagnoses") + guides(fill = guide_legend(title = "Received Dupilumab?")) + 
+  
+  theme(legend.position = "bottom") + scale_x_discrete(labels = function(x)str_wrap(x, width=10))
+
+```
+
+
+<!-- footer -->
+
+---
+ 
+```{r, echo = FALSE, out.width= "70%", fig.show='hold'}
+knitr::include_graphics("logo.png")
+```
+
+

@@ -1,0 +1,134 @@
+Id,Code,Name,Class,Standard Concept Caption,RC,DRC,Distance,Domain,Vocabulary
+35520796,245918,"dupilumab 200mg/1.14mL SUBCUTANEOUS INJECTION, SOLUTION",9-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+36046880,3.80187E+16,Dupilumab 200mg/1.14ml solution for injection pre-filled disposable devices,VMP,Non-Standard,timeout,timeout,2,Drug,dm+d
+908295,C582203,dupilumab,Suppl Concept,Non-Standard,timeout,timeout,1,Drug,MeSH
+36175658,24591402,2 ML dupilumab 150 MG/ML Prefilled Syringe [Dupixent],11-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+44416426,24591401,2 ML dupilumab 150 MG/ML Prefilled Syringe [Dupixent],11-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+36050230,3.8013E+16,Dupilumab 300mg/2ml solution for injection pre-filled disposable devices 2 pre-filled disposable injection,VMPP,Non-Standard,timeout,timeout,3,Drug,dm+d
+37618212,24591800,1.14 ML dupilumab 175 MG/ML Prefilled Syringe [Dupixent],11-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+37618213,24591820,1.14 ML dupilumab 175 MG/ML Prefilled Syringe [Dupixent],11-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+37618210,24591500,2 ML dupilumab 150 MG/ML Auto-Injector [Dupixent],11-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+37618211,24591501,2 ML dupilumab 150 MG/ML Auto-Injector [Dupixent],11-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+37618208,24591400,2 ML dupilumab 150 MG/ML Prefilled Syringe [Dupixent],11-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+37618209,24591420,2 ML dupilumab 150 MG/ML Prefilled Syringe [Dupixent],11-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+3192848,733487000,Dupilumab,Substance,Non-Standard,timeout,timeout,1,Drug,Nebraska Lexicon
+36047616,3.80123E+16,Dupilumab 200mg/1.14ml solution for injection pre-filled disposable devices 2 pre-filled disposable injection,VMPP,Non-Standard,timeout,timeout,3,Drug,dm+d
+36051465,3.74249E+16,Dupixent 200mg/1.14ml solution for injection pre-filled syringes,AMP,Non-Standard,timeout,timeout,3,Drug,dm+d
+21601907,D,DERMATOLOGICALS,ATC 1st,Classification,timeout,timeout,4,Drug,ATC
+37116683,733487000,Dupilumab,Substance,Non-Standard,timeout,timeout,1,Drug,SNOMED
+36050275,3.68264E+16,Dupilumab 300mg/2ml solution for injection pre-filled syringes 6 pre-filled disposable injection,VMPP,Non-Standard,timeout,timeout,3,Drug,dm+d
+1146201,2375326,dupilumab Auto-Injector,Clinical Drug Form,Standard,timeout,timeout,1,Drug,RxNorm
+1146203,2375330,dupilumab 150 MG/ML Auto-Injector,Clinical Drug,Standard,timeout,timeout,2,Drug,RxNorm
+1146202,2375328,dupilumab Auto-Injector [Dupixent],Branded Drug Form,Standard,timeout,timeout,1,Drug,RxNorm
+1501787,D11AH05,dupilumab,ATC 5th,Classification,timeout,timeout,1,Drug,ATC
+1146204,2375331,dupilumab 150 MG/ML Auto-Injector [Dupixent],Branded Drug,Standard,timeout,timeout,2,Drug,RxNorm
+35622225,763589007,Dupilumab-containing product,Pharma/Biol Product,Non-Standard,timeout,timeout,1,Drug,SNOMED
+40744761,OMOP4712350,dupilumab Injectable Solution [Dupixent],Branded Drug Form,Standard,timeout,timeout,1,Drug,RxNorm Extension
+40744760,OMOP4712351,dupilumab 150 MG/ML Injectable Solution,Clinical Drug,Standard,timeout,timeout,2,Drug,RxNorm Extension
+43557326,245915,"dupilumab 300mg/2mL SUBCUTANEOUS INJECTION, SOLUTION",9-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+43046342,3011664,"DUPIXENT 300 mg, solution injectable en seringue préremplie",Drug Product,Non-Standard,timeout,timeout,3,Drug,BDPM
+40744762,OMOP4712349,dupilumab Injectable Solution,Clinical Drug Form,Standard,timeout,timeout,1,Drug,RxNorm Extension
+40744757,OMOP4712354,dupilumab 150 MG/ML Injectable Solution [Dupixent] Box of 2,Branded Drug Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+40744756,OMOP4712355,dupilumab 150 MG/ML Prefilled Syringe Box of 2,Clinical Drug Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+21602323,D11,OTHER DERMATOLOGICAL PREPARATIONS,ATC 2nd,Classification,timeout,timeout,3,Drug,ATC
+40744759,OMOP4712352,dupilumab 150 MG/ML Injectable Solution Box of 2,Clinical Drug Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+40744758,OMOP4712353,dupilumab 150 MG/ML Injectable Solution [Dupixent],Branded Drug,Standard,timeout,timeout,2,Drug,RxNorm Extension
+21602324,D11A,OTHER DERMATOLOGICAL PREPARATIONS,ATC 3rd,Classification,timeout,timeout,2,Drug,ATC
+43559109,24591502,2 ML dupilumab 150 MG/ML Auto-Injector [Dupixent],11-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+43559110,24591520,2 ML dupilumab 150 MG/ML Auto-Injector [Dupixent],11-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+40744755,OMOP4712356,dupilumab 150 MG/ML Prefilled Syringe [Dupixent] Box of 2,Branded Drug Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+36053574,OMOP4978758,1.14 ML dupilumab 175 MG/ML Injectable Solution [Dupixent] Box of 2 by Sanofi,Marketed Product,Standard,timeout,timeout,3,Drug,RxNorm Extension
+36053575,OMOP4978759,1.14 ML dupilumab 175 MG/ML Injectable Solution [Dupixent] Box of 2,Quant Branded Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+1593467,1876376,dupilumab,Ingredient,Standard,timeout,timeout,1,Drug,RxNorm
+36053573,OMOP4978757,1.14 ML dupilumab 175 MG/ML Prefilled Syringe [Dupixent] by Sanofi,Marketed Product,Standard,timeout,timeout,3,Drug,RxNorm Extension
+21602337,D11AH,"Agents for dermatitis, excluding corticosteroids",ATC 4th,Classification,timeout,timeout,1,Drug,ATC
+36053578,OMOP4978762,1.14 ML dupilumab 175 MG/ML Injectable Solution Box of 2,Quant Clinical Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+36053579,OMOP4978763,1.14 ML dupilumab 175 MG/ML Injectable Solution,Quant Clinical Drug,Standard,timeout,timeout,2,Drug,RxNorm Extension
+36053576,OMOP4978760,1.14 ML dupilumab 175 MG/ML Injectable Solution [Dupixent] by Sanofi,Marketed Product,Standard,timeout,timeout,3,Drug,RxNorm Extension
+36053577,OMOP4978761,1.14 ML dupilumab 175 MG/ML Injectable Solution [Dupixent],Quant Branded Drug,Standard,timeout,timeout,2,Drug,RxNorm Extension
+36049238,3.80188E+16,Dupilumab 300mg/2ml solution for injection pre-filled disposable devices,VMP,Non-Standard,timeout,timeout,2,Drug,dm+d
+36062551,OMOP4988579,dupilumab 175 MG/ML Injectable Solution [Dupixent] Box of 2,Branded Drug Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+36421209,OMOP4763493,dupilumab 150 MG/ML Prefilled Syringe Box of 6,Clinical Drug Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+36421208,OMOP4763492,dupilumab 150 MG/ML Prefilled Syringe [Dupixent] Box of 6,Branded Drug Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+36062556,OMOP4988584,dupilumab 150 MG/ML Injectable Solution Box of 6,Clinical Drug Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+43031787,77447,Dupilumab,Ingredient,Non-Standard,timeout,timeout,1,Drug,BDPM
+36062554,OMOP4988582,dupilumab 175 MG/ML Injectable Solution,Clinical Drug,Standard,timeout,timeout,2,Drug,RxNorm Extension
+36062555,OMOP4988583,dupilumab 150 MG/ML Injectable Solution [Dupixent] Box of 6,Branded Drug Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+36062552,OMOP4988580,dupilumab 175 MG/ML Injectable Solution [Dupixent],Branded Drug,Standard,timeout,timeout,2,Drug,RxNorm Extension
+36047705,3.74544E+16,Dupilumab 200mg/1.14ml solution for injection pre-filled syringes,VMP,Non-Standard,timeout,timeout,2,Drug,dm+d
+36062553,OMOP4988581,dupilumab 175 MG/ML Injectable Solution Box of 2,Clinical Drug Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+1593496,1876406,2 ML dupilumab 150 MG/ML Prefilled Syringe [Dupixent],Quant Branded Drug,Standard,timeout,timeout,2,Drug,RxNorm
+1593497,1876407,dupilumab 150 MG/ML Prefilled Syringe,Clinical Drug,Standard,timeout,timeout,2,Drug,RxNorm
+1593498,1876408,dupilumab 150 MG/ML Prefilled Syringe [Dupixent],Branded Drug,Standard,timeout,timeout,2,Drug,RxNorm
+36050850,3.80124E+16,Dupixent 200mg/1.14ml solution for injection pre-filled pens,AMP,Non-Standard,timeout,timeout,3,Drug,dm+d
+35524504,24591802,1.14 ML dupilumab 175 MG/ML Prefilled Syringe [Dupixent],11-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+36053921,3.80132E+16,Dupixent 300mg/2ml solution for injection pre-filled pens (Sanofi) 2 pre-filled disposable injection,AMPP,Non-Standard,timeout,timeout,3,Drug,dm+d
+40697828,733487000,Dupilumab,Ingredient,Non-Standard,timeout,timeout,1,Drug,dm+d
+1593488,1876398,dupilumab 150 MG/ML,Clinical Drug Comp,Standard,timeout,timeout,1,Drug,RxNorm
+1593489,1876399,dupilumab Injectable Product,Clinical Dose Group,Classification,timeout,timeout,1,Drug,RxNorm
+35524503,24591801,1.14 ML dupilumab 175 MG/ML Prefilled Syringe [Dupixent],11-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+1593490,1876400,dupilumab Prefilled Syringe,Clinical Drug Form,Standard,timeout,timeout,1,Drug,RxNorm
+1593491,1876401,2 ML dupilumab 150 MG/ML Prefilled Syringe,Quant Clinical Drug,Standard,timeout,timeout,2,Drug,RxNorm
+1593492,1876402,Dupixent,Brand Name,Non-Standard,timeout,timeout,1,Drug,RxNorm
+2082195,652001091,DUPIXENT Prefilled Syringe,Drug Product,Non-Standard,timeout,timeout,3,Drug,KDC
+40697824,3.49518E+16,Dupixent 300mg/2ml solution for injection pre-filled syringes,AMP,Non-Standard,timeout,timeout,3,Drug,dm+d
+1593493,1876403,dupilumab 150 MG/ML [Dupixent],Branded Drug Comp,Standard,timeout,timeout,1,Drug,RxNorm
+2082193,KDC24021,dupilumab,Ingredient,Non-Standard,timeout,timeout,1,Drug,KDC
+1593494,1876404,dupilumab Prefilled Syringe [Dupixent],Branded Drug Form,Standard,timeout,timeout,1,Drug,RxNorm
+40697826,3.49517E+16,Dupilumab 300mg/2ml solution for injection pre-filled syringes 2 pre-filled disposable injection,VMPP,Non-Standard,timeout,timeout,3,Drug,dm+d
+1593495,1876405,Dupixent Injectable Product,Branded Dose Group,Classification,timeout,timeout,1,Drug,RxNorm
+40697827,3.49516E+16,Dupilumab 300mg/2ml solution for injection pre-filled syringes,VMP,Non-Standard,timeout,timeout,2,Drug,dm+d
+1146755,2375329,2 ML dupilumab 150 MG/ML Auto-Injector [Dupixent],Quant Branded Drug,Standard,timeout,timeout,2,Drug,RxNorm
+1146754,2375327,2 ML dupilumab 150 MG/ML Auto-Injector,Quant Clinical Drug,Standard,timeout,timeout,2,Drug,RxNorm
+35172494,1E+11,Dupilumab(Genetical Recombination) 300mg2mL1Syg [Dupixent],Drug Product,Non-Standard,timeout,timeout,2,Drug,JMDC
+36051376,3.80125E+16,Dupixent 200mg/1.14ml solution for injection pre-filled pens (Sanofi) 2 pre-filled disposable injection,AMPP,Non-Standard,timeout,timeout,3,Drug,dm+d
+36492981,245916,"dupilumab 300mg/2mL SUBCUTANEOUS INJECTION, SOLUTION",9-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+40717517,OMOP4739784,2 ML dupilumab 150 MG/ML Injectable Solution,Quant Clinical Drug,Standard,timeout,timeout,2,Drug,RxNorm Extension
+40717516,OMOP4739785,2 ML dupilumab 150 MG/ML Injectable Solution Box of 2,Quant Clinical Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+40717513,OMOP4739788,2 ML dupilumab 150 MG/ML Injectable Solution [Dupixent] Box of 2,Quant Branded Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+1123764,N0000193352,DUPILUMAB,Pharma Preparation,Non-Standard,timeout,timeout,1,Drug,NDFRT
+40717512,OMOP4739789,2 ML dupilumab 150 MG/ML Injectable Solution [Dupixent] Box of 2 by Sanofi,Marketed Product,Standard,timeout,timeout,3,Drug,RxNorm Extension
+35157694,JMDC1400,dupilumab,Ingredient,Non-Standard,timeout,timeout,1,Drug,JMDC
+40717515,OMOP4739786,2 ML dupilumab 150 MG/ML Injectable Solution [Dupixent],Quant Branded Drug,Standard,timeout,timeout,2,Drug,RxNorm Extension
+1123766,N0000193412,"DUPILUMAB 150MG/ML INJ,SYR,2ML",VA Product,Non-Standard,timeout,timeout,2,Drug,VA Product
+40717514,OMOP4739787,2 ML dupilumab 150 MG/ML Injectable Solution [Dupixent] by Sanofi,Marketed Product,Standard,timeout,timeout,3,Drug,RxNorm Extension
+40717509,OMOP4739792,2 ML dupilumab 150 MG/ML Prefilled Syringe [Dupixent] Box of 2,Quant Branded Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+40717508,OMOP4739793,2 ML dupilumab 150 MG/ML Prefilled Syringe [Dupixent] Box of 2 by Sanofi,Marketed Product,Standard,timeout,timeout,3,Drug,RxNorm Extension
+40717511,OMOP4739790,2 ML dupilumab 150 MG/ML Prefilled Syringe Box of 2,Quant Clinical Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+36497543,24591601,2 ML dupilumab 150 MG/ML Prefilled Syringe [Dupixent],11-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+40717510,OMOP4739791,2 ML dupilumab 150 MG/ML Prefilled Syringe [Dupixent] by Sanofi,Marketed Product,Standard,timeout,timeout,3,Drug,RxNorm Extension
+35832972,1E+11,Dupilumab(Genetical Recombination) [Dupixent],Drug Product,Non-Standard,timeout,timeout,1,Drug,JMDC
+40697823,3.49519E+16,Dupixent 300mg/2ml solution for injection pre-filled syringes (Sanofi) 2 pre-filled disposable injection,AMPP,Non-Standard,timeout,timeout,3,Drug,dm+d
+35201187,2101124,dupilumab 175 MG/ML,Clinical Drug Comp,Standard,timeout,timeout,1,Drug,RxNorm
+44348959,595f437d-2729-40bb-9c62-c8ece1f82780,"DUPIXENT - dupilumab injection, solution",Prescription Drug,Classification,timeout,timeout,,Drug,SPL
+35201189,2101128,dupilumab 175 MG/ML Prefilled Syringe,Clinical Drug,Standard,timeout,timeout,2,Drug,RxNorm
+35201188,2101126,dupilumab 175 MG/ML [Dupixent],Branded Drug Comp,Standard,timeout,timeout,1,Drug,RxNorm
+44467224,245914,"dupilumab 300mg/2mL SUBCUTANEOUS INJECTION, SOLUTION",9-digit NDC,Non-Standard,timeout,timeout,2,Drug,NDC
+35201190,2101129,dupilumab 175 MG/ML Prefilled Syringe [Dupixent],Branded Drug,Standard,timeout,timeout,2,Drug,RxNorm
+35202011,2099302,1.14 ML dupilumab 175 MG/ML Prefilled Syringe [Dupixent],Quant Branded Drug,Standard,timeout,timeout,2,Drug,RxNorm
+35202010,2099300,1.14 ML dupilumab 175 MG/ML Prefilled Syringe,Quant Clinical Drug,Standard,timeout,timeout,2,Drug,RxNorm
+36418798,OMOP4761102,2 ML dupilumab 150 MG/ML Prefilled Syringe Box of 6,Quant Clinical Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+36418797,OMOP4761101,2 ML dupilumab 150 MG/ML Prefilled Syringe [Dupixent] Box of 6,Quant Branded Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+37487588,1190264-60-8,Dupilumab,Ingredient,Non-Standard,timeout,timeout,1,Drug,CTD
+42875478,OMOP4872592,dupilumab 175 MG/ML Prefilled Syringe [Dupixent] Box of 2,Branded Drug Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+42875479,OMOP4872593,dupilumab 175 MG/ML Prefilled Syringe [Dupixent] Box of 6,Branded Drug Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+42875476,OMOP4872590,dupilumab 175 MG/ML Prefilled Syringe Box of 2,Clinical Drug Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+42875477,OMOP4872591,dupilumab 175 MG/ML Prefilled Syringe Box of 6,Clinical Drug Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+36053752,3.80131E+16,Dupixent 300mg/2ml solution for injection pre-filled pens,AMP,Non-Standard,timeout,timeout,3,Drug,dm+d
+36053702,3.7425E+16,Dupixent 200mg/1.14ml solution for injection pre-filled syringes (Sanofi) 2 pre-filled disposable injection,AMPP,Non-Standard,timeout,timeout,3,Drug,dm+d
+36055490,OMOP4980850,2 ML dupilumab 150 MG/ML Injectable Solution [Dupixent] Box of 6,Quant Branded Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+36055491,OMOP4980851,2 ML dupilumab 150 MG/ML Injectable Solution Box of 6,Quant Clinical Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+36055489,OMOP4980849,2 ML dupilumab 150 MG/ML Injectable Solution [Dupixent] Box of 6 by Sanofi,Marketed Product,Standard,timeout,timeout,3,Drug,RxNorm Extension
+36053966,3.68265E+16,Dupixent 300mg/2ml solution for injection pre-filled syringes (Sanofi) 6 pre-filled disposable injection,AMPP,Non-Standard,timeout,timeout,3,Drug,dm+d
+35201000,2099304,dupilumab 200 MG/ML Prefilled Syringe [Dupixent],Branded Drug,Standard,timeout,timeout,2,Drug,RxNorm
+42876538,OMOP4873644,1.14 ML dupilumab 175 MG/ML Prefilled Syringe [Dupixent] Box of 6 by Sanofi,Marketed Product,Standard,timeout,timeout,3,Drug,RxNorm Extension
+42876536,OMOP4873642,1.14 ML dupilumab 175 MG/ML Prefilled Syringe [Dupixent] Box of 2 by Sanofi,Marketed Product,Standard,timeout,timeout,3,Drug,RxNorm Extension
+36049105,3.74248E+16,Dupilumab 200mg/1.14ml solution for injection pre-filled syringes 2 pre-filled disposable injection,VMPP,Non-Standard,timeout,timeout,3,Drug,dm+d
+42876537,OMOP4873643,1.14 ML dupilumab 175 MG/ML Prefilled Syringe [Dupixent] Box of 6,Quant Branded Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+42876534,OMOP4873640,1.14 ML dupilumab 175 MG/ML Prefilled Syringe Box of 6,Quant Clinical Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+42876535,OMOP4873641,1.14 ML dupilumab 175 MG/ML Prefilled Syringe [Dupixent] Box of 2,Quant Branded Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+42876533,OMOP4873639,1.14 ML dupilumab 175 MG/ML Prefilled Syringe Box of 2,Quant Clinical Box,Standard,timeout,timeout,3,Drug,RxNorm Extension
+35200997,2099299,dupilumab 200 MG/ML,Clinical Drug Comp,Standard,timeout,timeout,1,Drug,RxNorm
+3210702,763589007,Product containing dupilumab,Pharma/Biol Product,Non-Standard,timeout,timeout,1,Drug,Nebraska Lexicon
+35200999,2099303,dupilumab 200 MG/ML Prefilled Syringe,Clinical Drug,Standard,timeout,timeout,2,Drug,RxNorm
+35200998,2099301,dupilumab 200 MG/ML [Dupixent],Branded Drug Comp,Standard,timeout,timeout,1,Drug,RxNorm
